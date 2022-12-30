@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-internal struct BottomSheetView<Content: View>: View {
+internal struct AlternativeSheetView<Content: View>: View {
     @Binding private var isPresented: Bool
     
     /// the offset from the last snapped position
@@ -20,13 +20,13 @@ internal struct BottomSheetView<Content: View>: View {
     internal let proxy: GeometryProxy
     internal let sortedSnaps: [Double]
     
-    internal let config: BottomSheetConfig
+    internal let config: AlternativeSheetConfig
     
     init(
         isPresented: Binding<Bool>,
         proxy: GeometryProxy,
         sortedSnaps: [Double],
-        config: BottomSheetConfig,
+        config: AlternativeSheetConfig,
         content: Content
     ) {
         self._isPresented = isPresented
@@ -78,7 +78,7 @@ internal struct BottomSheetView<Content: View>: View {
     }
 }
 
-internal extension BottomSheetView {
+internal extension AlternativeSheetView {
     func closeSheet() {
         config.onDismiss()
         isPresented = false

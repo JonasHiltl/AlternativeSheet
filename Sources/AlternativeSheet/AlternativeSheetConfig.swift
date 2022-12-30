@@ -25,7 +25,7 @@ public enum DampenLimit {
     case fix(CGFloat)
 }
 
-internal class BottomSheetConfig {
+internal class AlternativeSheetConfig {
     var animation: Animation? = .easeOut(duration: 0.2)
     var backgroundView: AnyView? = AnyView(Color.white)
     var cornerRadius: CGFloat = 16

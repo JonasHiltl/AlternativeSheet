@@ -7,7 +7,7 @@
 
 import Foundation
 
-internal extension BottomSheetView {
+internal extension AlternativeSheetView {
     /// Calculates the height of the max snap point.
     func maxSnapHeight() -> CGFloat {
         return proxy.size.height * sortedSnaps[0]

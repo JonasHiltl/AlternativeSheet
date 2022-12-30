@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-public extension BottomSheet {
-    func customAnimation(_ animation: Animation?) -> BottomSheet {
+public extension AlternativeSheet {
+    func customAnimation(_ animation: Animation?) -> AlternativeSheet {
         self.config.animation = animation
         return self
     }

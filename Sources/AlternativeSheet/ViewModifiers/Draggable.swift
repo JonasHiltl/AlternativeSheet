@@ -5,10 +5,10 @@
 //  Copyright © 2022 Jonas Hiltl. All rights reserved.
 //
 
-public extension BottomSheet {
+public extension AlternativeSheet {
     
     /// Specifies whether the bottom sheet should be draggable.
-    func isDraggable(_ bool: Bool = true) -> BottomSheet {
+    func isDraggable(_ bool: Bool = true) -> AlternativeSheet {
         self.config.isDraggable = bool
         return self
     }

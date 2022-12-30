@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-public extension BottomSheet {
+public extension AlternativeSheet {
     
     /// Changes the corner radius of the bottom sheet.
     /// Default is 16.
-    func customCornerRadius(_ radius: CGFloat) -> BottomSheet {
+    func customCornerRadius(_ radius: CGFloat) -> AlternativeSheet {
         self.config.cornerRadius = radius
         return self
     }

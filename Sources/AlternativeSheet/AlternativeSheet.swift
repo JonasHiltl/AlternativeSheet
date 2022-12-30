@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-public struct BottomSheet<Content: View, V: View>: View {
+public struct AlternativeSheet<Content: View, V: View>: View {
     @Binding var isPresented: Bool
     
     let snaps: [Double]
     let view: V
     let content: Content
-    internal var config: BottomSheetConfig = BottomSheetConfig()
+    internal var config: AlternativeSheetConfig = AlternativeSheetConfig()
 
     public var body: some View {
         ZStack {
@@ -35,7 +35,7 @@ public struct BottomSheet<Content: View, V: View>: View {
                 }
                 
                 GeometryReader { proxy in
-                    BottomSheetView(
+                    AlternativeSheetView(
                         isPresented: $isPresented,
                         proxy: proxy,
                         sortedSnaps: snaps.sorted { (lhs, rhs) in
@@ -65,8 +65,8 @@ public extension View {
         isPresented: Binding<Bool>,
         snaps: [Double],
         @ViewBuilder content: @escaping () -> Content
-    ) -> BottomSheet<Content, Self> {
-        BottomSheet(
+    ) -> AlternativeSheet<Content, Self> {
+        AlternativeSheet(
             isPresented: isPresented,
             snaps: snaps,
             view: self,

@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-public extension BottomSheet {
+public extension AlternativeSheet {
     
     /// Changes the type of the bottom sheet, default is `.stretch`.
     /// This will modify the height of the sheet, either stretches from bottom of screen to top of sheet or has height of the fullscreen.
-    func sheetType(_ type: BottomSheetType) -> BottomSheet {
+    func sheetType(_ type: BottomSheetType) -> AlternativeSheet {
         self.config.sheetType = type
         return self
     }

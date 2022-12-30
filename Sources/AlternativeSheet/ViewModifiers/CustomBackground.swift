@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-public extension BottomSheet {
-    func customBackground<Background>(_ background: Background) -> BottomSheet where Background: View {
+public extension AlternativeSheet {
+    func customBackground<Background>(_ background: Background) -> AlternativeSheet where Background: View {
         self.config.backgroundView = AnyView(background)
         return self
     }

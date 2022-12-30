@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-internal extension BottomSheetView {
+internal extension AlternativeSheetView {
     func onDragChanged(value: DragGesture.Value) {
         config.onDragChanged(value)
         
