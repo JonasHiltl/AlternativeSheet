@@ -50,10 +50,7 @@ internal struct AlternativeSheetView<Content: View>: View {
     }
 
     var body: some View {
-        VStack {
-            Text(config.dampenDrag ? "true" : "false")
-            content
-        }
+        content
         .frame(
             maxWidth: .infinity,
             maxHeight: maxHeight

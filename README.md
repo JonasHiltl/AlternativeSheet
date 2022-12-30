@@ -6,7 +6,7 @@ A bottom sheet with customizable snap points and much more.
 
 - Easy to use.
 - Unlimited snap points.
-- A lot of modifierts.
+- A lot of modifiers.
 - Drag can be damped above max/min snap point.
 
 ## Requirements
