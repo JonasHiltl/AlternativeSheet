@@ -61,7 +61,7 @@ public extension View {
     ///   - isPresented: Whether to hide or show the sheet.
     ///   - snaps: Values between 1.0 and 0.0 specifying the snap points of the sheet.
     ///   - content: A closure that returns the content of the bottom sheet.
-    func bottomSheet<Content: View>(
+    func alternativeSheet<Content: View>(
         isPresented: Binding<Bool>,
         snaps: [Double],
         @ViewBuilder content: @escaping () -> Content
@@ -72,18 +72,5 @@ public extension View {
             view: self,
             content: content()
         )
-    }
-}
-
-struct BottomSheet_Previews: PreviewProvider {
-    static var previews: some View {
-        Text("Hello, world!")
-            .bottomSheet(isPresented: .constant(true), snaps: [0.7, 0.2]) {
-                Text("I'm the content of the Bottom Sheet")
-            }
-            .isDraggable()
-            .customOverlay(Color.green.opacity(0.2))
-            .dampenDrag(false)
-            .dampenLimit(.fix(10))
     }
 }
