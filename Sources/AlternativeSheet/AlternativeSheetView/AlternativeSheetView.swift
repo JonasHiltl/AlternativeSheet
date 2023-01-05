@@ -53,7 +53,8 @@ internal struct AlternativeSheetView<Content: View>: View {
         content
         .frame(
             maxWidth: .infinity,
-            maxHeight: maxHeight
+            maxHeight: maxHeight,
+            alignment: .top
         )
         .background(config.backgroundView)
         .cornerRadius(config.cornerRadius, corners: [.topLeft, .topRight])
