@@ -44,8 +44,7 @@ internal struct AlternativeSheetView<Content: View>: View {
         case .fullscreen:
             return .infinity
         case .stretch:
-            return proxy.size.height + proxy.safeAreaInsets.bottom - offsetY - translation
-
+            return max(proxy.size.height + proxy.safeAreaInsets.bottom - offsetY - translation, 0)
         }
     }
 

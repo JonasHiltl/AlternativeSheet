@@ -9,9 +9,13 @@ import SwiftUI
 
 public extension AlternativeSheet {
     /// Changes the overlay that is placed behind the bottom sheet when the bottom sheet is presented.
-    /// Default is `Color.black.opacity(0.3)`
-    func customOverlay<Overlay>(_ overlay: Overlay) -> AlternativeSheet where Overlay: View {
-        self.config.overlayView = AnyView(overlay)
+    /// If `overlay` is not defined/nil the overlay will be removed.
+    func customOverlay(_ overlay: (any View)?) -> AlternativeSheet {
+        if let overlay = overlay {
+            self.config.overlayView = AnyView(overlay)
+        } else {
+            self.config.overlayView = nil
+        }
         return self
     }
 }
