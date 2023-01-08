@@ -16,40 +16,40 @@ public struct AlternativeSheet<Content: View, V: View>: View {
     internal var config: AlternativeSheetConfig = AlternativeSheetConfig()
 
     public var body: some View {
-        ZStack {
-            view
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    if isPresented == true {
-                        config.onDismiss()
-                        isPresented = false
+        if snaps.count > 0 {
+            ZStack {
+                view
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        if isPresented == true {
+                            config.onDismiss()
+                            isPresented = false
+                        }
                     }
-                }
-            
-            if isPresented {
-                if let overlay = config.overlayView {
-                    overlay
-                        .edgesIgnoringSafeArea(.all)
-                        .allowsHitTesting(false)
-                }
                 
-                GeometryReader { proxy in
-                    AlternativeSheetView(
-                        isPresented: $isPresented,
-                        proxy: proxy,
-                        sortedSnaps: snaps.sorted { (lhs, rhs) in
-                            return rhs < lhs
-                        },
-                        config: config,
-                        content: content
-                    )
+                if isPresented {
+                    if let overlay = config.overlayView {
+                        overlay
+                            .edgesIgnoringSafeArea(.all)
+                            .allowsHitTesting(false)
+                    }
+                    
+                    GeometryReader { proxy in
+                        AlternativeSheetView(
+                            isPresented: $isPresented,
+                            proxy: proxy,
+                            snaps: snaps,
+                            config: config,
+                            content: content
+                        )
+                    }
+                    .transition(.move(edge: .bottom))
+                    .zIndex(1)
                 }
-                .transition(.move(edge: .bottom))
-                .zIndex(1)
             }
+            .animation(config.animation, value: isPresented)
         }
-        .animation(config.animation, value: isPresented)
     }
 }
 
@@ -60,6 +60,7 @@ public extension View {
     /// - Parameters:
     ///   - isPresented: Whether to hide or show the sheet.
     ///   - snaps: Values between 1.0 and 0.0 specifying the snap points of the sheet.
+    ///            The first snap point in the array is the initial height of the sheet.
     ///   - content: A closure that returns the content of the bottom sheet.
     func alternativeSheet<Content: View>(
         isPresented: Binding<Bool>,

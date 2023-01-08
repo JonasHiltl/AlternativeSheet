@@ -20,23 +20,29 @@ internal struct AlternativeSheetView<Content: View>: View {
     internal let proxy: GeometryProxy
     internal let sortedSnaps: [Double]
     
+    /// the first snap in the snap array is the initial height of the sheet
+    internal let firstSnap: Double
+    
     internal let config: AlternativeSheetConfig
     
     init(
         isPresented: Binding<Bool>,
         proxy: GeometryProxy,
-        sortedSnaps: [Double],
+        snaps: [Double],
         config: AlternativeSheetConfig,
         content: Content
     ) {
         self._isPresented = isPresented
         self.proxy = proxy
-        self.sortedSnaps = sortedSnaps
+        self.sortedSnaps = snaps.sorted { (lhs, rhs) in
+            return rhs < lhs
+        }
+        self.firstSnap = snaps[0]
         self.config = config
         self.content = content
         
         // set inital height to largest snap point
-        self._offsetY = .init(initialValue: proxy.size.height * (1.0 - sortedSnaps[0]))
+        self._offsetY = .init(initialValue: proxy.size.height * (1.0 - firstSnap))
     }
     
     private var maxHeight: CGFloat {
